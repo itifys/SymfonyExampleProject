@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome Video{% endblock %}
+
+{% block body %}
+    <h1>Welcome Video</h1>
+
+    {% if welcome_video %}
+    <iframe width="80%" height="500px" src="{{  welcome_video.videoLink }}" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+    {% else %} <div>No welcome video</div>
+    {% endif %}
+
+{% endblock %}

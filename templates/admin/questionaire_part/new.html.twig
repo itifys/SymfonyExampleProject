@@ -1,0 +1,11 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}New QuestionairePart{% endblock %}
+
+{% block body %}
+    <h1>Create new QuestionairePart</h1>
+
+    {{ include('admin/questionaire_part/_form.html.twig') }}
+
+    <a href="{{ path('questionaire_part_index') }}" class="btn btn-primary">back to list</a>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tags{% endblock %}
+
+{% block body %}
+    <div class="row">
+    <h1 class="h">Questionaire Tags</h1>
+    </div>
+    <div class="row">
+
+
+    {% for key, tag in tags %}
+            <div class="allTags"><a href="{{ path('questionaire_part_site_index', { 'tag': key }) }}" style="font-size: {{ tag > average ? '25px' : '10px' }}">{{ key }}</a></div>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

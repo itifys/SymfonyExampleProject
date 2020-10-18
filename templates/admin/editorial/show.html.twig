@@ -1,0 +1,62 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Editorial{% endblock %}
+
+{% block body %}
+    <h1>Editorial</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ editorial.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ editorial.title }}</td>
+            </tr>
+            <tr>
+                <th>Link_title</th>
+                <td>{{ editorial.linkTitle }}</td>
+            </tr>
+            <tr>
+                <th>Link_title_font_size</th>
+                <td>{{ editorial.linkTitleFontSize }}</td>
+            </tr>
+            <tr>
+                <th>Display_type</th>
+                <td>{{ editorial.displayType }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td><img src="{{ editorial.image ? asset(editorial.image) : '' }}" style="height: 400px"></td>
+            </tr>
+            <tr>
+                <th>Video_link</th>
+                <td><a href="{{ editorial.videoLink }}"> {{ editorial.videoLink }}</a></td>
+            </tr>
+            <tr>
+                <th>Text</th>
+                <td>{{ editorial.text }}</td>
+            </tr>
+            <tr>
+                <th>Creators</th>
+                <td>{{ editorial.creators }}</td>
+            </tr>
+            <tr>
+                <th>Created at</th>
+                <td>{{ editorial.createdAt |date('d-m-Y H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Updated at</th>
+                <td>{{ editorial.updatedAt ? editorial.updatedAt|date('d-m-Y H:i:s') : ''  }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('editorial_index') }}" class="btn btn-primary">back to list</a>
+
+    <a href="{{ path('editorial_edit', {'id': editorial.id}) }}" class ="btn btn-warning">edit</a>
+
+    {{ include('admin/editorial/_delete_form.html.twig') }}
+{% endblock %}

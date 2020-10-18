@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+{#    <title>Site</title>#}
+    <title>{% block title %}{% endblock %}</title>
+    {% block styles %} {% endblock %}
+    {% block stylesheets %}
+
+        <link rel="stylesheet" href="{{ asset('assets/admin/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/admin/srtdash/assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/admin/srtdash/assets/css/themify-icons.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/admin/srtdash/assets/css/metisMenu.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/admin/srtdash/assets/css/owl.carousel.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/admin/srtdash/assets/css/slicknav.min.css') }}">
+        <!-- amchart css -->
+        <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+        <!-- others css -->
+        <link rel="stylesheet" href="{{ asset('assets/admin/srtdash/assets/css/typography.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/admin/srtdash/assets/css/default-css.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/admin/srtdash/assets/css/styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/admin/srtdash/assets/css/responsive.css') }}">
+
+
+        <!-- modernizr css -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="{{ asset('assets/admin/srtdash/assets/js/vendor/modernizr-2.8.3.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/srtdash/assets/js/vendor/jquery-2.2.4.min.js') }}"></script>
+        {#        <script src="https://cdn.tiny.cloud/1/lfvunvlzhdo3vyzgp3dfuy2y80xjjr7mq3lfycxjg3csrs1w/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>#}
+    {% endblock %}
+
+</head>
+<body>
+
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- preloader area start -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+<!-- preloader area end -->
+<!-- page container area start -->
+<div class="page-container">
+
+    <!-- sidebar menu area start -->
+{#    <div class="sidebar-menu">#}
+{#        <div class="sidebar-header">#}
+
+{#        </div>#}
+{#        <div class="main-menu">#}
+{#            <div class="menu-inner">#}
+{#                <nav>#}
+{#                    <ul class="metismenu" id="menu">#}
+{#                        <li>#}
+{#                            <a href="{{ path('interview_site_index') }}" aria-expanded="true"><i></i><span>Interviews</span></a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="{{ path('conversation_site_index') }}" aria-expanded="true"><i></i><span>Conversations</span></a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="{{ path('editorial_site_index') }}" aria-expanded="true"><i></i><span>Editorials</span></a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="{{ path('room_site_index') }}" aria-expanded="true"><i></i><span>Rooms</span></a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="{{ path('team_site_index') }}" aria-expanded="true"><i></i><span>Teams</span></a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="{{ path('comment_index') }}" aria-expanded="true"><i></i><span>Comments</span></a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="{{ path('play_internal_site_index') }}" aria-expanded="true"><i></i><span>Play Internals</span></a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="{{ path('play_external_site_index') }}" aria-expanded="true"><i></i><span>Play Externals</span></a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="{{ path('welcome_video_site_index') }}" aria-expanded="true"><i></i><span>Welcome Videos</span></a>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <a href="{{ path('gallery_image_site_index') }}" aria-expanded="true"><i></i><span>Gallery</span></a>#}
+{#                        </li>#}
+
+
+{#                        #}
+{#                    </ul>#}
+{#                </nav>#}
+{#            </div>#}
+{#        </div>#}
+
+{#    </div>#}
+    <!-- sidebar menu area end -->
+    <!-- main content area start -->
+
+    <!-- main content area end -->
+
+    {% block body %}{% endblock %}
+
+</div>
+{% block modals %}{% endblock %}
+
+{% block javascripts %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="{{ asset('assets/admin/js/modals.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+
+
+    <!-- bootstrap 4 js -->
+    <script src="{{ asset('assets/admin/srtdash/assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/srtdash/assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/modals.js') }}"></script>
+    <script src="{{ asset('assets/admin/srtdash/assets/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/srtdash/assets/js/metisMenu.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/srtdash/assets/js/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/srtdash/assets/js/jquery.slicknav.min.js') }}"></script>
+
+    <!-- start chart js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <!-- start highcharts js -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- start zingchart js -->
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script>
+        zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+        ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+    </script>
+    <!-- all line chart activation -->
+    <script src="{{ asset('assets/admin/srtdash/assets/js/line-chart.js') }}"></script>
+    <!-- all pie chart -->
+        <!-- others plugins -->
+    <script src="{{ asset('assets/admin/srtdash/assets/js/plugins.js') }}"></script>
+    <script src="{{ asset('assets/admin/srtdash/assets/js/scripts.js') }}"></script>
+{% endblock %}
+{% block js %}
+{% endblock %}
+
+
+</body>
+</html>

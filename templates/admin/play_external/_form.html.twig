@@ -1,0 +1,27 @@
+{% form_theme form 'jquery.collection.html.twig' %}
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-warning">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+{#<script src="{{ asset('js/jquery.js') }}"></script>#}
+{% block js %}
+    <script src="{{ asset('jquery.collection.js') }}"></script>
+
+    <script type="text/javascript">
+        $('.photos').collection({
+            allow_up: false,
+            allow_down: false,
+            'prefix': 'first-collection'
+        });
+
+        $('.video_links').collection({
+            allow_up: false,
+            allow_down: false,
+            'prefix': 'second-collection'
+        });
+    </script>
+{% endblock %}
+
+
+

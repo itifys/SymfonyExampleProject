@@ -1,0 +1,49 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Editorials{% endblock %}
+
+{% block body %}
+    <h1>Editorials<a href="{{ path('editorial_new') }}" class="btn btn-success">Create new</a></h1>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Link_title</th>
+                <th>Link_title_font_size</th>
+                <th>Display_type</th>
+                <th>Image</th>
+                <th>Video_link</th>
+                <th>Text</th>
+                <th>Creators</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for editorial in editorials %}
+            <tr>
+                <td>{{ editorial.id }}</td>
+                <td>{{ editorial.title }}</td>
+                <td>{{ editorial.linkTitle }}</td>
+                <td>{{ editorial.linkTitleFontSize }}</td>
+                <td>{{ editorial.displayType }}</td>
+                <td><img src="{{ editorial.image ? asset(editorial.image) : '' }}"></td>
+                <td><a href="{{ editorial.videoLink }}"> {{ editorial.videoLink }}</a></td>
+                <td>{{ editorial.text }}</td>
+                <td>{{ editorial.creators }}</td>
+                <td>
+                    <a href="{{ path('editorial_show', {'id': editorial.id}) }}" class="btn btn-info">show</a>
+                    <a href="{{ path('editorial_edit', {'id': editorial.id}) }}" class ="btn btn-warning">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

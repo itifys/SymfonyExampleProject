@@ -1,0 +1,11 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}New PlayExternal{% endblock %}
+
+{% block body %}
+    <h1>Create new PlayExternal</h1>
+
+    {{ include('admin/play_external/_form.html.twig') }}
+
+    <a href="{{ path('play_external_index') }}" class="btn btn-primary">back to list</a>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Play Externals{% endblock %}
+
+{% block body %}
+    <h1>Play Externals    <a href="{{ path('play_external_new') }}" class="btn btn-success">Create new</a>
+    </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Poster</th>
+                <th>Premiere_date</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for play_external in play_externals %}
+            <tr>
+                <td>{{ play_external.id }}</td>
+                <td><img src="{{ asset(play_external.poster) }}"></td>
+                <td>{{ play_external.premiereDate ? play_external.premiereDate|date('Y-m-d') : '' }}</td>
+                <td>{{ play_external.description }}</td>
+                <td>
+                    <a href="{{ path('play_external_show', {'id': play_external.id}) }}" class="btn btn-info">show</a>
+                    <a href="{{ path('play_external_edit', {'id': play_external.id}) }}" class ="btn btn-warning">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

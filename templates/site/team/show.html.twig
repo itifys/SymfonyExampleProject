@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Team{% endblock %}
+
+{% block body %}
+    <h1>Team</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ team.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ team.title }}</td>
+            </tr>
+            <tr>
+                <th>Video_link</th>
+                <td><a href="{{ team.videoLink }}">{{ team.videoLink }}</a></td>
+            </tr>
+            <tr>
+                <th>Video</th>
+                <td><iframe width="400" height="200" src="{{ team.videoLink }}" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ team.description }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ team.createdAt ? team.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ team.updatedAt ? team.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('team_site_index') }}" class="btn btn-primary">back to list</a>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}QuestionaireParts{% endblock %}
+
+{% block body %}
+    <div>
+        <h3>Tag: <strong>{{ tag }} </strong></h3>
+        <div class="row">
+
+            <div class="col-3">
+    <div class="allTags">
+        <a href="{{ path('tag_site_index') }}"><p class="cloud"> back to cloud</p></a>
+        <p>all tags</p>
+        <ul>
+            {% for key, allTag in allTags %}
+                <li><a href="{{ path('questionaire_part_site_index', { 'tag': key }) }}"> {{ key }} </a></li>
+            {% endfor %}
+        </ul>
+    </div>
+            </div>
+
+<div class="col-9">
+    <div class="questionaires">
+    {% for questionaire_part in questionaire_parts %}
+        <div class="questionaire">
+        <div class="questionaoreTitle">{{ questionaire_part.title }}</div>
+        {% if  questionaire_part.displayType == 2%}
+            <div class="questionaoreText"><p>{{ questionaire_part.text ? questionaire_part.text : '' }}</p></div>
+        {% endif %}
+        {% if  questionaire_part.displayType == 1%}
+        <div><img src="{{ questionaire_part.image ? asset(questionaire_part.image) : '' }}" style="height: 100px"> </div>
+        {% endif %}
+            <div class="questionaoreTags">
+        {% for tag in questionaire_part.tags %}
+            <a href="{{ path('questionaire_part_site_index', { 'tag': tag.tag }) }}"> {{ tag.tag }}</a>
+        {% endfor %}
+            </div>
+        </div>
+
+    {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+    </div>
+
+    </div>
+        </div>
+    </div>
+{% endblock %}

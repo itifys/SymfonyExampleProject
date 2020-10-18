@@ -1,0 +1,13 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Edit Conversation{% endblock %}
+
+{% block body %}
+    <h1>Edit Conversation</h1>
+
+    {{ include('admin/conversation/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('conversation_index') }}" class="btn btn-primary">back to list</a>
+
+    {{ include('admin/conversation/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Play Internals{% endblock %}
+
+{% block body %}
+    <h1>Play Internals</h1>
+
+    <form class="filter" method="get">
+        {% set selected = app.request.get('premiere_date') %}
+        <select class="premiere_date" name="premiere_date">
+            <option {% if selected == 'Premiere date - DESC' %} selected="selected"{% endif %}>
+                Premiere date - DESC
+            </option>
+            <option {% if selected == 'Premiere date - ASC' %} selected="selected"{% endif %}>
+                Premiere date - ASC
+            </option>
+
+            <input class="btn btn-light" type="submit" value="send" style="margin-left: 10px"/>
+        </select>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Poster</th>
+                <th>Premiere_date</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for play_internal in play_internals %}
+            <tr>
+                <td>{{ play_internal.id }}</td>
+                <td><img src="{{ asset(play_internal.poster) }}"></td>
+                <td>{{ play_internal.premiereDate ? play_internal.premiereDate|date('Y-m-d') : '' }}</td>
+                <td>{{ play_internal.createdAt ? play_internal.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ play_internal.updatedAt ? play_internal.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

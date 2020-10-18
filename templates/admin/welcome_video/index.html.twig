@@ -1,0 +1,44 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Welcome Videos index{% endblock %}
+
+{% block body %}
+{#{{ dump(welcome_videos) }}#}
+    {% if welcome_videos is empty %}
+    <h1>Welcome Videos    <a href="{{ path('welcome_video_new') }}" class="btn btn-success">Create new</a>
+        {% else %}
+        <h1>Welcome Videos </a>
+        {% endif %}
+    </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Video_link</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for welcome_video in welcome_videos %}
+            <tr>
+                <td>{{ welcome_video.id }}</td>
+                <td><a href="{{ welcome_video.videoLink }}">{{ welcome_video.videoLink }}</a></td>
+                <td>{{ welcome_video.createdAt ? welcome_video.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ welcome_video.updatedAt ? welcome_video.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('welcome_video_show', {'id': welcome_video.id}) }}" class="btn btn-info">show</a>
+                    <a href="{{ path('welcome_video_edit', {'id': welcome_video.id}) }}" class ="btn btn-warning">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

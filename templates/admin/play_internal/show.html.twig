@@ -1,0 +1,38 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}PlayInternal{% endblock %}
+
+{% block body %}
+    <h1>PlayInternal</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ play_internal.id }}</td>
+            </tr>
+            <tr>
+                <th>Poster</th>
+                <td><img src="{{ asset(play_internal.poster) }}" style="height: 200px"></td>
+            </tr>
+            <tr>
+                <th>Premiere_date</th>
+                <td>{{ play_internal.premiereDate ? play_internal.premiereDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ play_internal.createdAt ? play_internal.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ play_internal.updatedAt ? play_internal.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('play_internal_index') }}" class="btn btn-primary">back to list</a>
+
+    <a href="{{ path('play_internal_edit', {'id': play_internal.id}) }}" class ="btn btn-warning">edit</a>
+
+    {{ include('admin/play_internal/_delete_form.html.twig') }}
+{% endblock %}

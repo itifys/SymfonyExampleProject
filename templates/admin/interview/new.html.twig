@@ -1,0 +1,11 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}New Interview{% endblock %}
+
+{% block body %}
+    <h1>Create new Interview</h1>
+
+    {{ include('admin/interview/_form.html.twig') }}
+
+    <a href="{{ path('interview_index') }}" class="btn btn-primary">back to list</a>
+{% endblock %}

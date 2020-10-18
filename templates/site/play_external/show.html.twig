@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Play External{% endblock %}
+
+{% block body %}
+    <h1>Play External</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ play_external.id }}</td>
+            </tr>
+            <tr>
+                <th>Poster</th>
+                <td><img src="{{ play_external.poster ? asset(play_external.poster) : '' }}"></td>
+            </tr>
+            <tr>
+                <th>Premiere_date</th>
+                <td>{{ play_external.premiereDate ? play_external.premiereDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ play_external.description }}</td>
+            </tr>
+            <tr>
+                <th>Photos</th>
+                <td>
+                    {% for photo in photos %}
+                        <img src="{{ asset(photo.photo) }}" style="height: 200px; padding: 10px">
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Video_links</th>
+                <td>
+                    {% for video in videos %}
+                        <p><iframe width="400" height="200" src="{{  video.videoLink }}" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen></iframe></p>
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('play_external_site_index') }}" class="btn btn-primary">back to list</a>
+
+
+{% endblock %}

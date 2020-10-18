@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Conversations{% endblock %}
+
+{% block body %}
+    <h1>Conversations</h1>
+
+    <form class="filter" method="get">
+        {% set selected = app.request.get('conversations') %}
+        <select class="conversations" name="conversations">
+            <option {% if selected == 'All conversations' %} selected="selected"{% endif %}>
+                All conversations
+            </option>
+            <option{% if selected == 'Sort by weight - DESC' %} selected="selected"{% endif %}>
+                Sort by weight - DESC
+            </option>
+            <option{% if selected == 'Sort by weight - ASC' %} selected="selected"{% endif %}>
+                Sort by weight - ASC
+            </option>
+            <input class="btn btn-light" type="submit" value="send" style="margin-left: 10px"/>
+        </select>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Video_link</th>
+{#                <th>Weight</th>#}
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for conversation in conversations %}
+            <tr>
+                <td>{{ conversation.id }}</td>
+                <td>{{ conversation.title }}</td>
+                <td>{{ conversation.description }}</td>
+                <td><a href="{{ conversation.videoLink }}"> {{ conversation.videoLink }}</a></td>
+{#                <td>{{ conversation.weight }}</td>#}
+                <td>{{ conversation.createdAt ? conversation.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ conversation.updatedAt ? conversation.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('conversation_site_show', {'id': conversation.id}) }}" class="btn btn-info">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

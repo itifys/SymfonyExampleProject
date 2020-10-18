@@ -1,0 +1,42 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Play Internals{% endblock %}
+
+{% block body %}
+    <h1>Play Internals    <a href="{{ path('play_internal_new') }}" class="btn btn-success">Create new</a>
+    </h1>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Poster</th>
+                <th>Premiere_date</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for play_internal in play_internals %}
+            <tr>
+                <td>{{ play_internal.id }}</td>
+                <td><img src="{{ asset(play_internal.poster) }}"></td>
+                <td>{{ play_internal.premiereDate ? play_internal.premiereDate|date('Y-m-d') : '' }}</td>
+                <td>{{ play_internal.createdAt ? play_internal.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ play_internal.updatedAt ? play_internal.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('play_internal_show', {'id': play_internal.id}) }}" class="btn btn-info">show</a>
+                    <a href="{{ path('play_internal_edit', {'id': play_internal.id}) }}" class ="btn btn-warning">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

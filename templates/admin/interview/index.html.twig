@@ -1,0 +1,56 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Interviews{% endblock %}
+
+{% block body %}
+    <h1>Interviews    <a href="{{ path('interview_new') }}" class="btn btn-success">Create new</a>
+    </h1>
+
+    <form class="filter" method="get">
+        {% set selected = app.request.get('interviews') %}
+        <select class="interviews" name="interviews">
+            <option {% if selected == 'All interviews' %} selected="selected"{% endif %}>
+                All interviews
+            </option>
+            <option {% if selected == 'Sort by weight - DESC' %} selected="selected"{% endif %}>
+                Sort by weight - DESC
+            </option>
+            <option {% if selected == 'Sort by weight - ASC' %} selected="selected"{% endif %}>
+                Sort by weight - ASC
+            </option>
+            <input class="btn btn-light" type="submit" value="send" style="margin-left: 10px"/>
+        </select>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Video_link</th>
+                <th>Weight</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for interview in interviews %}
+            <tr>
+                <td>{{ interview.id }}</td>
+                <td>{{ interview.title }}</td>
+                <td>{{ interview.description }}</td>
+                <td><a href="{{ interview.videoLink }}"> {{ interview.videoLink }}</a></td>
+                <td>{{ interview.weight }}</td>
+                <td>
+                    <a href="{{ path('interview_show', {'id': interview.id}) }}" class="btn btn-info">show</a>
+                    <a href="{{ path('interview_edit', {'id': interview.id}) }}" class ="btn btn-warning">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

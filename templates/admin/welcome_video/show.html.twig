@@ -1,0 +1,41 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}WelcomeVideo{% endblock %}
+
+{% block body %}
+    <h1>WelcomeVideo</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ welcome_video.id }}</td>
+            </tr>
+            <tr>
+                <th>Video_link</th>
+                <td><a href="{{ welcome_video.videoLink }}">{{ welcome_video.videoLink }}</a></td>
+            </tr>
+            <tr>
+                <th>Video</th>
+                <td><iframe width="400" height="200" src="{{ welcome_video.videoLink }}" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ welcome_video.createdAt ? welcome_video.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ welcome_video.updatedAt ? welcome_video.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('welcome_video_index') }}" class="btn btn-primary">back to list</a>
+
+    <a href="{{ path('welcome_video_edit', {'id': welcome_video.id}) }}" class ="btn btn-warning">edit</a>
+
+{#    {{ include('admin/welcome_video/_delete_form.html.twig') }}#}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% form_theme form 'jquery.collection.html.twig' %}
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-warning">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+{% block js %}
+<script src="{{ asset('jquery.collection.js') }}"></script>
+<script type="text/javascript">
+
+    $('.tags').collection({
+        allow_up: false,
+        allow_down: false,
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editorial{% endblock %}
+
+{% block body %}
+    <h1>Editorial</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ editorial.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ editorial.title }}</td>
+            </tr>
+            <tr>
+                <th>Link_title</th>
+                <td style="font-size: {{ editorial.linkTitleFontSize }}px">{{ editorial.linkTitle }}</td>
+            </tr>
+            {% if editorial.displayType == 1  %}
+            <tr>
+                <th>Image</th>
+                <td><img src="{{ editorial.image ? asset(editorial.image) : "" }}" style="height: 400px"></td>
+            </tr>
+            {% endif %}
+            {% if editorial.displayType == 2  %}
+            <tr>
+                <th>Video_link</th>
+                <td><a href="{{ editorial.videoLink ? editorial.videoLink : '' }}"> {{ editorial.videoLink ? editorial.videoLink : '' }}</a></td>
+            </tr>
+            {% endif %}
+            {% if editorial.displayType == 3  %}
+            <tr>
+                <th>Text</th>
+                <td>{{ editorial.text ? editorial.text : '' }}</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <th>Creators</th>
+                <td>{{ editorial.creators }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ editorial.createdAt ? editorial.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ editorial.updatedAt ? editorial.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('editorial_site_index') }}" class="btn btn-primary">back to list</a>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Edit PlayInternal{% endblock %}
+
+{% block body %}
+    <h1>Edit PlayInternal</h1>
+
+    {{ include('admin/play_internal/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('play_internal_index') }}" class="btn btn-primary">back to list</a>
+
+    {{ include('admin/play_internal/_delete_form.html.twig') }}
+{% endblock %}

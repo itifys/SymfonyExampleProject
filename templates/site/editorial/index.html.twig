@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editorials{% endblock %}
+
+{% block body %}
+    <h1>Editorials</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Link_title</th>
+                <th>Image</th>
+                <th>Video_link</th>
+                <th>Text</th>
+                <th>Creators</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for editorial in editorials %}
+            <tr>
+                <td>{{ editorial.id }}</td>
+                <td>{{ editorial.title }}</td>
+                <td style="font-size: {{ editorial.linkTitleFontSize }}px">{{ editorial.linkTitle }}</td>
+                {% if editorial.displayType == 1 %}
+                <td><img src="{{ editorial.image ? asset(editorial.image) : "" }}"></td>
+                {% else %}<td></td>
+                {% endif %}
+                {% if editorial.displayType == 2 %}
+                <td><a href="{{ editorial.videoLink ? editorial.videoLink : "" }}"> {{ editorial.videoLink ? editorial.videoLink : "" }}</a></td>
+                {% else %}<td></td>
+                {% endif %}
+                {% if editorial.displayType == 3 %}
+                <td>{{ editorial.text ? editorial.text : "" }}</td>
+                {% else %}<td></td>
+                {% endif %}
+                <td>{{ editorial.creators }}</td>
+                <td>{{ editorial.createdAt ? editorial.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ editorial.updatedAt ? editorial.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('editorial_site_show', {'id': editorial.id}) }}" class="btn btn-info">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

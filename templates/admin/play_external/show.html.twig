@@ -1,0 +1,50 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}PlayExternal{% endblock %}
+
+{% block body %}
+    <h1>PlayExternal</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ play_external.id }}</td>
+            </tr>
+            <tr>
+                <th>Poster</th>
+                <td><img src="{{ asset(play_external.poster) }}" style="height: 300px"></td>
+            </tr>
+            <tr>
+                <th>Premiere_date</th>
+                <td>{{ play_external.premiereDate ? play_external.premiereDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ play_external.description }}</td>
+            </tr>
+            <tr>
+                <th>Photos</th>
+                <td>
+                {% for photo in photos %}
+                    <img src="{{ asset(photo.photo) }}" style="height: 200px; padding: 10px">
+                {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Video_links</th>
+                <td>
+                {% for video in videos %}
+                    <p><a href="{{ video.videoLink }}"> {{ video.videoLink }}</a></p>
+                {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('play_external_index') }}" class="btn btn-primary">back to list</a>
+
+    <a href="{{ path('play_external_edit', {'id': play_external.id}) }}" class ="btn btn-warning">edit</a>
+
+    {{ include('admin/play_external/_delete_form.html.twig') }}
+{% endblock %}

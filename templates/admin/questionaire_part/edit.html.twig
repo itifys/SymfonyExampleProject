@@ -1,0 +1,13 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Edit QuestionairePart{% endblock %}
+
+{% block body %}
+    <h1>Edit QuestionairePart</h1>
+
+    {{ include('admin/questionaire_part/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('questionaire_part_index') }}" class="btn btn-primary">back to list</a>
+
+    {{ include('admin/questionaire_part/_delete_form.html.twig') }}
+{% endblock %}

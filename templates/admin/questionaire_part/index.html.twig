@@ -1,0 +1,46 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}QuestionaireParts{% endblock %}
+
+{% block body %}
+    <h1>QuestionaireParts</h1>
+    <a href="{{ path('questionaire_part_new') }}" class="btn btn-success">Create new</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Text</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for questionaire_part in questionaire_parts %}
+            <tr>
+                <td>{{ questionaire_part.id }}</td>
+                <td>{{ questionaire_part.title }}</td>
+                {% if questionaire_part.image %}
+                <td><img src="{{ asset(questionaire_part.image) }}"></td>
+                    {% else %}<td></td>
+                {% endif %}
+                <td>{{ questionaire_part.text ? questionaire_part.text : ''  }}</td>
+                <td>{{ questionaire_part.createdAt ? questionaire_part.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ questionaire_part.updatedAt ? questionaire_part.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('questionaire_part_show', {'id': questionaire_part.id}) }}" class="btn btn-info">show</a>
+                    <a href="{{ path('questionaire_part_edit', {'id': questionaire_part.id}) }}" class ="btn btn-warning">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

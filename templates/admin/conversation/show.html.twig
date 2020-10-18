@@ -1,0 +1,53 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Conversation{% endblock %}
+
+{% block body %}
+    <h1>Conversation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ conversation.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ conversation.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ conversation.description }}</td>
+            </tr>
+            <tr>
+                <th>Video_link</th>
+                <td><a href="{{conversation.videoLink  }}"> {{ conversation.videoLink }}</a></td>
+            </tr>
+            <tr>
+                <th>Video</th>
+                <td><iframe width="400" height="200" src="{{  conversation.videoLink }}" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </td>
+            </tr>
+            <tr>
+                <th>Weight</th>
+                <td>{{ conversation.weight }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ conversation.createdAt|date('d-m-Y H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ conversation.updatedAt ? conversation.updatedAt|date('d-m-Y H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('conversation_index') }}" class="btn btn-primary">back to list</a>
+
+    <a href="{{ path('conversation_edit', {'id': conversation.id}) }}" class ="btn btn-warning">edit</a>
+
+    {{ include('admin/conversation/_delete_form.html.twig') }}
+{% endblock %}

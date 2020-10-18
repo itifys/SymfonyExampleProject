@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gallery{% endblock %}
+    {% block styles %}<link href="{{ asset('assets/lightgallery/dist/css/lightgallery.css') }}" rel="stylesheet"> {% endblock %}
+
+
+{% block body %}
+    <h1>Gallery</h1>
+
+{#    <div><img src="{{ asset(gallery_image.image) }}" style="height: 200px"></div>#}
+    <ul id="lightgallery" class="list-unstyled row">
+        {% for gallery_image in gallery_images %}
+
+                <li data-responsive=""
+                    data-src="{{ asset(gallery_image.image) }}"
+                    data-sub-html="{{ gallery_image.description }}"
+                    data-pinterest-text="Pin it1"
+                    data-tweet-text="share on twitter 1">
+                    <a href="">
+                        <img class="img-responsive" src="{{ asset(gallery_image.image) }}" style="height: 150px; margin: 25px;">
+                    </a>
+                </li>
+
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}
+
+{% block js %}
+
+    <!-- Core -->
+    <script src="{{ asset('assets/lightgallery/demo/js/lightgallery.js') }}"></script>
+    <!-- Autoplay -->
+    <script src="{{ asset('assets/lightgallery/demo/js/lg-autoplay.js') }}"></script>
+<!-- Fullscreen -->
+    <script src="{{ asset('assets/lightgallery/demo/js/lg-fullscreen.js') }}"></script>
+<!-- Hashtag -->
+    <script src="{{ asset('assets/lightgallery/demo/js/lg-hash.js') }}"></script>
+<!-- Pager -->
+    <script src="{{ asset('assets/lightgallery/demo/js/lg-pager.js') }}"></script>
+<!-- Social share -->
+    <script src="{{ asset('assets/lightgallery/demo/js/lg-share.js') }}"></script>
+<!-- Thumbnail -->
+    <script src="{{ asset('assets/lightgallery/demo/js/lg-thumbnail.js') }}"></script>
+<!-- HTML5/YOUTUBE/VIMEO Video -->
+    <script src="{{ asset('assets/lightgallery/demo/js/lg-video.js') }}"></script>
+<!-- Zoom -->
+    <script src="{{ asset('assets/lightgallery/demo/js/lg-zoom.js') }}"></script>
+<!-- Rotate -->
+    <script src="{{ asset('assets/lightgallery/demo/js/lg-rotate.js') }}"></script>
+    <script>
+        lightGallery(document.getElementById('lightgallery'));
+    </script>
+{% endblock %}
